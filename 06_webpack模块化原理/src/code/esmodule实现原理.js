@@ -5,7 +5,7 @@
       (function (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
         // module.exports上添加Symbol.toStringTag: 'Module'和`__esModule: true`属性
         __webpack_require__.r(__webpack_exports__);
-        // 设置导出方法sum和mul的代理
+        // 设置导出方法sum和mul的代理 即 设置访问器getter属性
         __webpack_require__.d(__webpack_exports__, {
           "mul": function () { return mul; },
           "sum": function () { return sum; }

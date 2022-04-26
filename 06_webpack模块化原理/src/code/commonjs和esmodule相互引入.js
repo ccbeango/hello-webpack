@@ -5,7 +5,6 @@
         const dateFormat = (date) => {
           return "2020-12-12";
         }
-
         const priceFormat = (price) => {
           return "100.00";
         }
@@ -17,9 +16,10 @@
       }),
     "./src/js/math.js":
       (function (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
         "use strict";
+        // module.exports上添加Symbol.toStringTag: 'Module'和`__esModule: true`属性
         __webpack_require__.r(__webpack_exports__);
+        // 设置导出方法sum和mul的代理 即 设置访问器getter属性
         __webpack_require__.d(__webpack_exports__, {
           "mul": function () { return mul; },
           "sum": function () { return sum; }
@@ -58,6 +58,7 @@
   /* webpack/runtime/compat get default export */
   !function () {
     // getDefaultExport function for compatibility with non-harmony modules
+    // 根据模块实现类型确定导出模块方式
     __webpack_require__.n = function (module) {
       var getter = module && module.__esModule ?
         function () { return module['default']; } :
@@ -108,10 +109,11 @@
 
     console.log(math.sum(20, 30));
     console.log(math.mul(20, 30));
-    // commonjs的这种导入方式会解构赋值 无论是被导入模块是哪种
+    // commonjs的导入方式会解构赋值 无论导入模块是哪种格式的
     console.log(sum(20, 30));
     console.log(mul(20, 30));
 
+    // esmodule的导入通过代理实现 无论导入的模块是哪种格式的
     console.log(_js_format__WEBPACK_IMPORTED_MODULE_0___default().dateFormat("1213"));
     console.log(_js_format__WEBPACK_IMPORTED_MODULE_0___default().priceFormat("1213"));
 
