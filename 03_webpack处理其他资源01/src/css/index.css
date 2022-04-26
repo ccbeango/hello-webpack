@@ -1,0 +1,12 @@
+@import "./test.css";
+
+.demo {
+  color: red;
+}
+
+.bg-image {
+  display: inline-block;
+  background-image: url('../img/avatar.jpeg');
+  background-size: contain;
+}
+

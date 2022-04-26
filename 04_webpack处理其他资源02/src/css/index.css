@@ -1,0 +1,18 @@
+@import "./test.css";
+@import "../font/iconfont.css";
+
+.demo {
+  color: red;
+}
+
+.bg-image {
+  display: inline-block;
+  background-image: url('../img/avatar.jpeg');
+  background-size: contain;
+}
+
+.icon-setting {
+  font-size: 50px;
+  color: red;
+}
+
