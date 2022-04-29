@@ -58,7 +58,6 @@
   /* webpack/runtime/compat get default export */
   !function () {
     // getDefaultExport function for compatibility with non-harmony modules
-    // 根据模块实现类型确定导出模块方式
     __webpack_require__.n = function (module) {
       var getter = module && module.__esModule ?
         function () { return module['default']; } :
