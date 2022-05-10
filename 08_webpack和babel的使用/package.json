@@ -5,7 +5,10 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
+    "@babel/plugin-transform-arrow-functions": "^7.16.7",
+    "@babel/plugin-transform-block-scoping": "^7.16.7",
     "@babel/preset-env": "^7.17.10",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
