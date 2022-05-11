@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  devtool: 'nosources-source-map',
+  devtool: 'source-map',
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
@@ -12,14 +12,35 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       plugins: [
+      //         '@babel/plugin-transform-arrow-functions',
+      //         '@babel/plugin-transform-block-scoping'
+      //       ]
+      //     }
+      //   }
+      // },
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: [
+      //         // '@babel/preset-env'
+      //         ['@babel/preset-env', { // 数组格式，第二个元素设置options
+      //           targets: "last 2 version"
+      //         }]
+      //       ]
+      //     }
+      //   }
+      // },
       {
         test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        loader: 'babel-loader'
       }
     ]
   },
