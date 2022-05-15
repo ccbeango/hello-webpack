@@ -12,6 +12,7 @@ module.exports = {
   },
   module: {
     rules: [
+      // 使用babel插件
       // {
       //   test: /\.js$/,
       //   use: {
@@ -24,6 +25,7 @@ module.exports = {
       //     }
       //   }
       // },
+      // 使用babel预设
       // {
       //   test: /\.js$/,
       //   use: {
@@ -38,9 +40,11 @@ module.exports = {
       //     }
       //   }
       // },
+      // 配合babel.config.js使用
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules/
       }
     ]
   },
