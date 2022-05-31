@@ -4,36 +4,36 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.js",
+  mode: 'development',
+  entry: './src/index.js',
   output: {
     clean: true,
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "./build"),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, './build'),
     // publicPath: '/test'
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/i,
-        use: "babel-loader"
+        use: 'babel-loader'
       },
       {
         test: /\.vue$/i,
-        use: "vue-loader"
+        use: 'vue-loader'
       },
       {
         test: /\.css/i,
         use: [
-          "style-loader",
-          "css-loader"
+          'style-loader',
+          'css-loader'
         ]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: './src/index.html'
     }),
     new ReactRefreshWebpackPlugin(),
     new VueLoaderPlugin()
@@ -42,7 +42,7 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx', '.ts', '.vue', '.wasm', '.mjs'],
     alias: {
       '@': path.resolve(__dirname, './src'),
-      "@pages": path.resolve(__dirname, "./src/pages")
+      '@pages': path.resolve(__dirname, './src/pages')
     }
   },
   devServer: {
@@ -77,7 +77,7 @@ module.exports = {
     historyApiFallback: true,
     // historyApiFallback: {
     //   rewrites: [
-    //     {from: /abc/, to: "/index.html"}
+    //     {from: /abc/, to: '/index.html'}
     //   ]
     // }
   }
