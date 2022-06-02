@@ -90,6 +90,11 @@ module.exports = {
           priority: -20
         }
       }
+    },
+    runtimeChunk: true, // false(默认)  true/multiple single { name: "" }
+    runtimeChunk: {
+      // name: 'runtime-ccbean',
+      name: (entrypoint) => `runtimechunk~${entrypoint.name}`
     }
   }
 }

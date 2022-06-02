@@ -15,3 +15,18 @@ console.log(moment().format('YYYY-MM-DD HH:MM:SS'))
 import(/* webpackChunkName: "foo" */'./foo_01').then((res) => {
   console.log('foo01', res)
 })
+
+
+const button = document.createElement('button')
+button.innerHTML = '加载元素'
+button.addEventListener('click', () => {
+  /* webpackPrefetch: true */
+  import(
+    /* webpackChunkName: "element" */
+    /* webpackPreload: true */
+    './element'
+  ).then(({ default: element }) => {
+    document.body.appendChild(element)
+  })
+})
+document.body.appendChild(button)
