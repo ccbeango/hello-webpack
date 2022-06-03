@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -45,6 +46,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new webpack.ProvidePlugin({
+      axios: 'axios',
+      Vue: ['vue/dist/vue.esm.js', 'default'],
     })
   ],
   resolve: {
@@ -91,10 +96,14 @@ module.exports = {
         }
       }
     },
-    runtimeChunk: true, // false(默认)  true/multiple single { name: "" }
+    // runtimeChunk: true, // false(默认)  true/multiple single { name: "" }
     runtimeChunk: {
       // name: 'runtime-ccbean',
-      name: (entrypoint) => `runtimechunk~${entrypoint.name}`
+      name: (entrypoint) => `runtimechunk-${entrypoint.name}`
     }
+  },
+  externals: { // 抽离第三方库
+    lodash: '_',
+    moment: 'moment'
   }
 }
