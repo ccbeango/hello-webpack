@@ -1,15 +1,19 @@
-import './style.css'
+import "./style.css";
+import { sum, mul } from "./util.js";
 
-const button = document.createElement('button')
-button.innerHTML = '加载元素'
-button.addEventListener('click', () => {
+sum(2, 2)
+mul(2, 2)
+
+const button = document.createElement("button");
+button.innerHTML = "加载元素";
+button.addEventListener("click", () => {
   /* webpackPrefetch: true */
   import(
     /* webpackChunkName: "element" */
     /* webpackPreload: true */
-    './element'
+    "./element"
   ).then(({ default: element }) => {
-    document.body.appendChild(element)
-  })
-})
-document.body.appendChild(button)
+    document.body.appendChild(element);
+  });
+});
+document.body.appendChild(button);

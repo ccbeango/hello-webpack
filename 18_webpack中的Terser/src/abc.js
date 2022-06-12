@@ -15,15 +15,11 @@ function getAuthInfoFromCloud(reqOptions) {
   return fetch(reqOptions)
 }
 
-getAuthInfoFromCloud({ url: 'http://httpbin.org', method: 'get' });
-
 const info = {
   nickname() {
     return 'ccbean';
   }
 }
-
-info.nickname();
 
 class Person {
   constructor() {
@@ -34,5 +30,3 @@ class Person {
     return 'hello'
   }
 }
-
-new Person()

@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack')
 
 module.exports = {
@@ -45,11 +44,6 @@ module.exports = {
   },
   optimization: {
     chunkIds: 'deterministic', // deterministic named
-    minimizer: [
-      new TerserPlugin({
-        extractComments: false
-      })
-    ],
     splitChunks: {
       // async 异步导入
       // initial 同步导入

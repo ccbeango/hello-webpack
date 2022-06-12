@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base');
 
@@ -6,6 +7,7 @@ process.env.NODE_ENV = 'development'
 
 module.exports = merge(baseConfig, {
   mode: "development",
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -17,6 +19,9 @@ module.exports = merge(baseConfig, {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin()
+  ],
   devServer: {
     hot: true,
     host: 'localhost',
