@@ -5,25 +5,28 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = merge(baseConfig, {
-  mode: "production",
-  module: {
-    rules: [
-      {
-        test: /\.css/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:6].css',
-      chunkFilename: 'css/[name].[contenthash:6].css'
-    })
-  ],
+  // mode: "production",
+  mode: "development",
+  devtool: 'source-map',
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.css/i,
+  //       use: [
+  //         MiniCssExtractPlugin.loader,
+  //         'css-loader'
+  //       ]
+  //     }
+  //   ]
+  // },
+  // plugins: [
+  //   new MiniCssExtractPlugin({
+  //     filename: 'css/[name].[contenthash:6].css',
+  //     chunkFilename: 'css/[name].[contenthash:6].css'
+  //   })
+  // ],
   optimization: {
+    usedExports: true,
     minimize: true,
     minimizer: [
       new TerserPlugin({
