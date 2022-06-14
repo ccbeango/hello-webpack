@@ -8,23 +8,24 @@ module.exports = merge(baseConfig, {
   // mode: "production",
   mode: "development",
   devtool: 'source-map',
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.css/i,
-  //       use: [
-  //         MiniCssExtractPlugin.loader,
-  //         'css-loader'
-  //       ]
-  //     }
-  //   ]
-  // },
-  // plugins: [
-  //   new MiniCssExtractPlugin({
-  //     filename: 'css/[name].[contenthash:6].css',
-  //     chunkFilename: 'css/[name].[contenthash:6].css'
-  //   })
-  // ],
+  module: {
+    rules: [
+      {
+        test: /\.css/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ],
+        sideEffects: true
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:6].css',
+      chunkFilename: 'css/[name].[contenthash:6].css'
+    })
+  ],
   optimization: {
     usedExports: true,
     minimize: true,

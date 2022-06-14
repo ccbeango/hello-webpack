@@ -1,6 +1,8 @@
 {
   "name": "19_learn_webpack",
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/format.js"
+  ],
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
