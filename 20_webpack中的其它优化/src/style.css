@@ -1,0 +1,16 @@
+html {
+  font-size: 15px;
+}
+
+body {
+  background: blue;
+}
+
+h2 {
+  border: 1px solid black;
+}
+
+.container {
+  color: red;
+  font-size: 30px;
+}
