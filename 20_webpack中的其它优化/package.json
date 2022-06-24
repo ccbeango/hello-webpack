@@ -1,5 +1,5 @@
 {
-  "name": "19_learn_webpack",
+  "name": "20_learn_webpack",
   "sideEffects": [
     "./src/format.js"
   ],
