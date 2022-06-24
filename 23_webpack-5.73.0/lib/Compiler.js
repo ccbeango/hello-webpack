@@ -511,6 +511,8 @@ class Compiler {
 			});
 		};
 
+		// compiler.run实际调用方法
+		// beforeRun -> run -> complie
 		const run = () => {
 			this.hooks.beforeRun.callAsync(this, err => {
 				if (err) return finalCallback(err);
@@ -520,7 +522,7 @@ class Compiler {
 
 					this.readRecords(err => {
 						if (err) return finalCallback(err);
-
+						// 开始编译
 						this.compile(onCompiled);
 					});
 				});
@@ -1157,12 +1159,33 @@ ${other}`);
 	 * @returns {void}
 	 */
 	compile(callback) {
+		// Compiler和Compilation的区别：
+		// Compiler：在Webpack构建之初就会创建此对象，并且在webpack的整个生命周期中都会
+		// 存在(before - run - beforeCompiler - compile - make - finishMake - afterCompiler)
+		// 只要是webpack编译，都会创建一个Compiler，也就是每次执行如npm run build时会创建Compiler对象
+
+		// Compilation是到准备编译模块（如main.js），才会创建Compilation对象
+		// 主要存在于 compile之后 - make之前，且是make阶段主要使用的对象
+
+		// 那么为什么要引入Compilation，只使用Compiler是否可以？
+		// 答案是不可以的。Compiler在整个生命周期中只使用一个对象即可。但是Compilation是每次
+		// 编译都会创建新的。
+		// 比如webpack开启了watch，只要是原代码发生了变化，就需要重新编译模块，此时重新编译
+		// 如果再创建Compiler对象显然是不合理的，Compiler对象在初始化过程中做了很多操作，详见createCompiler
+		// 原代码发生改变，Compiler是可以继续使用的。
+		// 那么这个重新编译的工作，就可以创建一个新的Compilation对象来做编译。
+		// 它们两个的生命周期不同，使用阶段也就不同。
+
+
+		// 初始化Compilation参数
 		const params = this.newCompilationParams();
+
+		// hooks流程：beforeCompile -> 
 		this.hooks.beforeCompile.callAsync(params, err => {
 			if (err) return callback(err);
 
 			this.hooks.compile.call(params);
-
+			// 创建Compilation对象
 			const compilation = this.newCompilation(params);
 
 			const logger = compilation.getLogger("webpack.Compiler");
